@@ -9,7 +9,11 @@ class List extends Component {
 
                 <h2>{this.props.name}</h2>
 
-                {this.props.children}
+                <ul>
+
+                    {this.props.children}
+
+                </ul>
 
             </div>
         );
