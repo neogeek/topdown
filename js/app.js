@@ -18,7 +18,7 @@
 
     const requestBoardLists = boardId => {
 
-        return apiRequest(`boards/${boardId}/lists?cards=open&card_fields=id,name&filter=open`)
+        return apiRequest(`boards/${boardId}/lists?cards=open&card_fields=id,name,shortUrl&filter=open`)
 
     }
 
@@ -34,6 +34,51 @@
 
     }
 
+    const convertDataToStateStructure = data => {
+
+        const lists = [];
+
+        for (let i = 0; i < data.length; i += 1) {
+
+            const boardName = data[i].name;
+
+            for (let j = 0; j < data[i].lists.length; j += 1) {
+
+                const { id, name, cards } = data[i].lists[j];
+
+                const exisitingList = lists.filter(list => list.name === name);
+
+                let currentList = null;
+
+                if (!exisitingList.length) {
+
+                    currentList = {
+                        name,
+                        ids: [id],
+                        cards: [...cards],
+                        cardSections: [{ boardName, cards }]
+                    };
+
+                    lists.push(currentList);
+
+                } else {
+
+                    currentList = exisitingList[0];
+
+                    currentList.ids.push(id);
+                    currentList.cards = currentList.cards.concat(cards);
+                    currentList.cardSections.push({ boardName, cards });
+
+                }
+
+            }
+
+        }
+
+        return lists;
+
+    }
+
     requestAllBoards().then()
         .then(boards => {
 
@@ -41,7 +86,9 @@
                 .then(boardLists => mapBoardListsToBoards(boardLists, boards))
                 .then(() => boards);
 
-        }).then(data => {
+        })
+        .then(convertDataToStateStructure)
+        .then(data => {
 
             console.log(data);
 
