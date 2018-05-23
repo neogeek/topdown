@@ -2,9 +2,9 @@
   "devDependencies": {
     "react": "16.3.2",
     "react-dom": "16.3.2",
-    "spire-of-babel": "neogeek/spire-of-babel"
+    "spire-of-babel": "1.3.0"
   },
   "scripts": {
-    "build": "spire-of-babel ./src/js/app.js --bundle > ./static/js/bundle.min.js"
+    "build": "spire-of-babel ./src/js/index.jsx --bundle > ./static/js/bundle.min.js"
   }
 }
