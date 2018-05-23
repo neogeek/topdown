@@ -5,6 +5,6 @@
     "spire-of-babel": "neogeek/spire-of-babel"
   },
   "scripts": {
-    "build": "spire-of-babel ./src/js/app.js --bundle --minify > ./static/js/bundle.min.js"
+    "build": "spire-of-babel ./src/js/app.js --bundle > ./static/js/bundle.min.js"
   }
 }
