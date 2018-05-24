@@ -6,7 +6,7 @@ const stringtoHSL = string =>
 class Card extends Component {
     render() {
         return (
-            <li className="card">
+            <li className="card" title={this.props.boardName}>
                 <a href={this.props.url} className="card__link" target="_blank" style={{
                     borderLeftColor: stringtoHSL(this.props.boardName)
                 }}>
