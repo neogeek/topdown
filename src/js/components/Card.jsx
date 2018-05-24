@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 const stringtoHSL = string =>
-    `hsl(${string.split().reduce((accu, val) => accu += val.charCodeAt() << 1000, 0)}, 80%, 50%)`;
+    `hsl(${string.split().reduce((accu, val) => accu += val.charCodeAt() << 1000, 0) % 250}, 80%, 60%)`;
 
 class Card extends Component {
     render() {
