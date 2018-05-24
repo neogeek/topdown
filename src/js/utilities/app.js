@@ -13,7 +13,7 @@ const requestAllBoards = () => {
 
 const requestBoardLists = boardId => {
     return apiRequest(
-        `boards/${boardId}/lists?cards=open&card_fields=id,name,shortUrl,idBoard&filter=open`
+        `boards/${boardId}/lists?cards=open&card_fields=id,name,url,idBoard&filter=open`
     );
 };
 

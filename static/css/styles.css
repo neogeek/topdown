@@ -34,24 +34,29 @@ h1, h2 {
 .list {
     flex-shrink: 0;
     width: 25rem;
+    margin: var(--card-padding);
 }
 
 .list__header {
-    margin: var(--card-padding);
+    margin-bottom: var(--card-padding);
 }
 
 .list__list {
-    margin: var(--card-padding);
-    padding: var(--card-padding) 0 0;
     display: flex;
     flex-direction: column;
     border-radius: 3px;
 }
 
 .card {
-    margin: 0 var(--card-padding) var(--card-padding) var(--card-padding);
-    padding: var(--card-padding);
     list-style: none;
+    margin-bottom: var(--card-padding);
+}
+
+.card__link {
+    display: block;
+    padding: var(--card-padding);
+    color: inherit;
+    text-decoration: none;
     border-radius: 3px;
     border-left-width: 10px;
     border-left-style: solid;
