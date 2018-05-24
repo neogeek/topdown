@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 
+const stringtoHSL = string =>
+    `hsl(${string.split().reduce((accu, val) => accu += val.charCodeAt() << 1000, 0)}, 80%, 50%)`;
+
 class Card extends Component {
     render() {
         return (
             <li className="card">
-                <a href={this.props.url} className="card__link" target="_blank">
+                <a href={this.props.url} className="card__link" target="_blank" style={{
+                    borderLeftColor: stringtoHSL(this.props.boardName)
+                }}>
                     {this.props.name}
                 </a>
             </li>

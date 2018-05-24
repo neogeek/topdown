@@ -11,7 +11,7 @@ getAllData().then(data => {
             {data.map((list, i) => (
                 <List name={list.name} key={i}>
                     {list.cards.map((card, j) => (
-                        <Card name={card.name} url={card.url} key={j} />
+                        <Card name={card.name} url={card.url} boardName={card.boardName} key={j} />
                     ))}
                 </List>
             ))}

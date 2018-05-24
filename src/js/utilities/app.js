@@ -42,8 +42,7 @@ const convertDataToStateStructure = data => {
                 currentList = {
                     name,
                     ids: [id],
-                    cards: [...cards],
-                    cardSections: [{ boardName, cards }]
+                    cards: [...cards.map(card => ({ ...card, boardName }))]
                 };
 
                 lists.push(currentList);
@@ -51,8 +50,7 @@ const convertDataToStateStructure = data => {
                 currentList = exisitingList[0];
 
                 currentList.ids.push(id);
-                currentList.cards = currentList.cards.concat(cards);
-                currentList.cardSections.push({ boardName, cards });
+                currentList.cards = currentList.cards.concat([...cards.map(card => ({ ...card, boardName }))]);
             }
         }
     }
