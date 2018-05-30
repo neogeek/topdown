@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 
 import { List, Card } from './index';
 
-import { getAllData } from '../utilities/app';
+import { getAllData } from '../utilities/datastore';
 
 class Board extends PureComponent {
     constructor(props) {
