@@ -36,23 +36,20 @@ class Authentication extends Component {
     }
 
     render() {
-        return (
-            <div className="authentication">
-                {this.state.token ? (
-                    React.Children.map(this.props.children, child =>
-                        React.cloneElement(child, {
-                            invalidateToken: this.invalidateToken
-                        })
-                    )
-                ) : (
-                    <button
-                        onClick={() =>
-                            authorize({ appName, appKey, redirectUrl })
-                        }
-                    >
-                        Login with Trello
-                    </button>
-                )}
+        return this.state.token ? (
+            React.Children.map(this.props.children, child =>
+                React.cloneElement(child, {
+                    invalidateToken: this.invalidateToken
+                })
+            )
+        ) : (
+            <div className="authentication__loginwrapper">
+                <button
+                    className="button button_authentication"
+                    onClick={() => authorize({ appName, appKey, redirectUrl })}
+                >
+                    Login with Trello
+                </button>
             </div>
         );
     }
