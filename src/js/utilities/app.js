@@ -1,45 +1,22 @@
-const appName = 'Top Down';
-const appKey = '6a26fcd8d47e93922b8caaab9178aa18';
-const redirectUrl = `${window.location.origin}${window.location.pathname}`;
-const userToken = () => localStorage.getItem('trello_token');
+import { appName, appKey, redirectUrl } from '../config';
 
-const apiRequest = path => {
-    return fetch(
-        `https://api.trello.com/1/${path}&key=${appKey}&token=${userToken()}`
-    ).then(response => {
-        if (!response.ok) {
-            localStorage.removeItem('trello_token');
-            return null;
-        }
-        return response.json();
-    });
-};
-
-const authorize = () => {
-    window.location.href = `https://trello.com/1/authorize?response_type=token&key=${appKey}&redirect_uri=${encodeURIComponent(
-        redirectUrl
-    )}&callback_method=fragment&scope=read%2Cwrite&expiration=never&name=${encodeURIComponent(
-        appName
-    )}`;
-};
-
-const getTokenFromUrl = () => {
-    const tokenParam = window.location.hash.match(/token=([^&]+)/);
-
-    if (tokenParam) {
-        return tokenParam[1];
-    }
-
-    return null;
-};
+import { apiRequest, authorize } from './api';
+import { getUserToken, setUserToken, getTokenFromUrl } from './auth';
 
 const requestAllBoards = () => {
-    return apiRequest('members/me/boards?filter=starred&fields=id,name');
+    return apiRequest('members/me/boards?filter=starred&fields=id,name', {
+        appKey,
+        userToken: getUserToken()
+    });
 };
 
 const requestBoardLists = boardId => {
     return apiRequest(
-        `boards/${boardId}/lists?cards=open&card_fields=id,name,url,idBoard&filter=open`
+        `boards/${boardId}/lists?cards=open&card_fields=id,name,url,idBoard&filter=open`,
+        {
+            appKey,
+            userToken: getUserToken()
+        }
     );
 };
 
@@ -95,4 +72,4 @@ const getAllData = () =>
         })
         .then(convertDataToStateStructure);
 
-export { authorize, getAllData, getTokenFromUrl, userToken };
+export { getAllData };

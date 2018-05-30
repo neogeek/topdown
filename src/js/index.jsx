@@ -3,12 +3,11 @@ import ReactDOM from 'react-dom';
 
 import { Board, List, Card } from './components';
 
-import {
-    authorize,
-    getAllData,
-    getTokenFromUrl,
-    userToken
-} from './utilities/app';
+import { appName, appKey, redirectUrl } from './config';
+
+import { authorize } from './utilities/api';
+import { getUserToken, getTokenFromUrl } from './utilities/auth';
+import { getAllData } from './utilities/app';
 
 const tokenFromURL = getTokenFromUrl();
 
@@ -16,7 +15,7 @@ if (tokenFromURL) {
     localStorage.setItem('trello_token', tokenFromURL);
 }
 
-if (userToken()) {
+if (getUserToken()) {
     getAllData().then(data => {
         ReactDOM.render(
             <Board>
@@ -38,7 +37,9 @@ if (userToken()) {
     });
 } else {
     ReactDOM.render(
-        <button onClick={authorize}>Login with Trello</button>,
+        <button onClick={() => authorize({ appName, appKey, redirectUrl })}>
+            Login with Trello
+        </button>,
         document.getElementById('root')
     );
 }
