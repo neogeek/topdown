@@ -10,6 +10,7 @@ const getTokenFromUrl = () => {
     const tokenParam = window.location.hash.match(/token=([^&]+)/);
 
     if (tokenParam) {
+        window.location.hash = '';
         return tokenParam[1];
     }
 
