@@ -4,10 +4,11 @@
     "babel-preset-env": "1.7.0",
     "react": "16.4.0",
     "react-dom": "16.4.0",
-    "spire-of-babel": "neogeek/spire-of-babel"
+    "spire-of-babel": "neogeek/spire-of-babel",
+    "uglify-js": "3.3.28"
   },
   "scripts": {
-    "build": "spire-of-babel ./src/js/index.jsx --bundle > ./public/js/bundle.min.js",
+    "build": "NODE_ENV=production spire-of-babel ./src/js/index.jsx --bundle | uglifyjs --compress --mangle > ./public/js/bundle.min.js",
     "serve": "(cd public && python -m SimpleHTTPServer)"
   }
 }
