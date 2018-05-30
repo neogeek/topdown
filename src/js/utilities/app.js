@@ -15,6 +15,24 @@ const apiRequest = path => {
     });
 };
 
+const authorize = () => {
+    window.location.href = `https://trello.com/1/authorize?response_type=token&key=${appKey}&redirect_uri=${encodeURIComponent(
+        redirectUrl
+    )}&callback_method=fragment&scope=read%2Cwrite&expiration=never&name=${encodeURIComponent(
+        appName
+    )}`;
+};
+
+const getTokenFromUrl = () => {
+    const tokenParam = window.location.hash.match(/token=([^&]+)/);
+
+    if (tokenParam) {
+        return tokenParam[1];
+    }
+
+    return null;
+};
+
 const requestAllBoards = () => {
     return apiRequest('members/me/boards?filter=starred&fields=id,name');
 };
@@ -77,4 +95,4 @@ const getAllData = () =>
         })
         .then(convertDataToStateStructure);
 
-export { getAllData };
+export { authorize, getAllData, getTokenFromUrl, userToken };
