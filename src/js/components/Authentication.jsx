@@ -3,7 +3,12 @@ import React, { Component } from 'react';
 import { appName, appKey, redirectUrl } from '../config';
 
 import { authorize } from '../utilities/api';
-import { getUserToken, setUserToken, getTokenFromUrl } from '../utilities/auth';
+import {
+    getUserToken,
+    setUserToken,
+    removeUserToken,
+    getTokenFromUrl
+} from '../utilities/auth';
 
 class Authentication extends Component {
     constructor(props) {
@@ -20,6 +25,14 @@ class Authentication extends Component {
 
             setUserToken(userTokenFromUrl);
         }
+
+        this.invalidateToken = this.invalidateToken.bind(this);
+    }
+
+    invalidateToken() {
+        this.setState({ token: null });
+
+        removeUserToken();
     }
 
     render() {
@@ -27,7 +40,9 @@ class Authentication extends Component {
             <div className="authentication">
                 {this.state.token ? (
                     React.Children.map(this.props.children, child =>
-                        React.cloneElement(child, this.state)
+                        React.cloneElement(child, {
+                            invalidateToken: this.invalidateToken
+                        })
                     )
                 ) : (
                     <button

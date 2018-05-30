@@ -14,7 +14,9 @@ class Board extends PureComponent {
     }
 
     componentDidMount() {
-        getAllData().then(data => this.setState({ data }));
+        getAllData()
+            .then(data => this.setState({ data }))
+            .catch(err => this.props.invalidateToken());
     }
 
     render() {
