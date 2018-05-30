@@ -1,9 +1,9 @@
 const appKey = '6a26fcd8d47e93922b8caaab9178aa18';
-const userToken = localStorage.getItem('trelloUserToken');
+const userToken = () => localStorage.getItem('trello_token');
 
 const apiRequest = path => {
     return fetch(
-        `https://api.trello.com/1/${path}&key=${appKey}&token=${userToken}`
+        `https://api.trello.com/1/${path}&key=${appKey}&token=${userToken()}`
     ).then(response => response.json());
 };
 
