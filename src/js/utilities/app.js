@@ -62,7 +62,6 @@ const convertDataToStateStructure = data => {
 
 const getAllData = () =>
     requestAllBoards()
-        .then()
         .then(boards => {
             return Promise.all(boards.map(({ id }) => requestBoardLists(id)))
                 .then(boardLists => mapBoardListsToBoards(boardLists, boards))
