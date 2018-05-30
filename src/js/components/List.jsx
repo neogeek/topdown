@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
-class List extends Component {
+class List extends PureComponent {
     render() {
         return (
             <div className="list">

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 const stringToHSL = string =>
     `hsl(${string
@@ -6,7 +6,7 @@ const stringToHSL = string =>
         .reduce((accu, val) => (accu += val.charCodeAt() << 1000), 0) %
         250}, 80%, 60%)`;
 
-class Card extends Component {
+class Card extends PureComponent {
     render() {
         return (
             <li className="card" title={this.props.boardName}>

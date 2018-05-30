@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
-class Board extends Component {
+class Board extends PureComponent {
     render() {
         return <div className="board">{this.props.children}</div>;
     }
