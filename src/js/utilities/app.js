@@ -4,7 +4,13 @@ const userToken = () => localStorage.getItem('trello_token');
 const apiRequest = path => {
     return fetch(
         `https://api.trello.com/1/${path}&key=${appKey}&token=${userToken()}`
-    ).then(response => response.json());
+    ).then(response => {
+        if (!response.ok) {
+            localStorage.removeItem('trello_token');
+            return null;
+        }
+        return response.json();
+    });
 };
 
 const requestAllBoards = () => {
