@@ -1,10 +1,12 @@
+import { removeUserToken } from './auth';
+
 const API_URL = 'https://trello.com/1';
 
 const apiRequest = (path, { appKey, userToken }) => {
     return fetch(`${API_URL}/${path}&key=${appKey}&token=${userToken}`).then(
         response => {
             if (!response.ok) {
-                localStorage.removeItem('trello_token');
+                removeUserToken();
                 return null;
             }
             return response.json();
