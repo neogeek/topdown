@@ -79,6 +79,7 @@ h1, h2 {
     padding-right: var(--card-spacing);
     max-height: calc(100% - 3rem);
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .card {
