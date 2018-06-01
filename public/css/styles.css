@@ -36,6 +36,7 @@ h1, h2 {
 
 .board {
     display: flex;
+    height: 100%;
 }
 
 @media (min-width: 48rem) {
@@ -54,7 +55,7 @@ h1, h2 {
 }
 
 .list__header {
-    margin-bottom: var(--card-spacing);
+    height: 3rem;
 }
 
 .list__header_item_count {
@@ -74,7 +75,7 @@ h1, h2 {
     display: flex;
     flex-direction: column;
     border-radius: 3px;
-    max-height: 80vh;
+    max-height: calc(100% - 3rem);
     overflow: auto;
 }
 
