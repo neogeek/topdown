@@ -23,7 +23,7 @@ class Board extends PureComponent {
         return (
             <div className="board">
                 {this.state.data.map((list, i) => (
-                    <List name={list.name} key={i}>
+                    <List visible={true} name={list.name} key={i}>
                         {list.cards.map((card, j) => (
                             <Card
                                 name={card.name}

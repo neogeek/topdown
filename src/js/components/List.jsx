@@ -3,6 +3,7 @@ import React, { PureComponent } from 'react';
 class List extends PureComponent {
     render() {
         return (
+            this.props.visible &&
             this.props.children.length > 0 && (
                 <div className="list">
                     <h2 className="list__header">
