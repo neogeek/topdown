@@ -1,5 +1,5 @@
 :root {
-    --card-padding: 0.75rem;
+    --card-spacing: 0.75rem;
 }
 
 html, body {
@@ -50,11 +50,11 @@ h1, h2 {
     flex-shrink: 0;
     max-width: 25rem;
     width: 100%;
-    padding: var(--card-padding);
+    padding: var(--card-spacing);
 }
 
 .list__header {
-    margin-bottom: var(--card-padding);
+    margin-bottom: var(--card-spacing);
 }
 
 .list__header_item_count {
@@ -80,12 +80,12 @@ h1, h2 {
 
 .card {
     list-style: none;
-    margin-bottom: var(--card-padding);
+    margin-bottom: var(--card-spacing);
 }
 
 .card__link {
     display: block;
-    padding: var(--card-padding);
+    padding: var(--card-spacing);
     color: inherit;
     text-decoration: none;
     border-radius: 3px;
