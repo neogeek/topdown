@@ -1,0 +1,15 @@
+{
+    "short_name": "Top Down",
+    "name": "Top Down - A simple, read-only, Trello board aggregator.",
+    "icons": [
+        {
+            "src": "images/icon@2x.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "https://topdownapp.firebaseapp.com/",
+    "background_color": "#FFFFFF",
+    "theme_color": "#0061C3",
+    "display": "minimal-ui"
+}
