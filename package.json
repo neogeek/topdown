@@ -4,7 +4,7 @@
     "babel-preset-env": "1.7.0",
     "react": "16.4.0",
     "react-dom": "16.4.0",
-    "spire-of-babel": "neogeek/spire-of-babel",
+    "spire-of-babel": "1.4.0",
     "uglify-js": "3.4.0"
   },
   "scripts": {
