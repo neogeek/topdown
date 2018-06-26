@@ -1,7 +1,7 @@
-import { appName, appKey, redirectUrl } from '../config';
+import { appKey } from '../config';
 
-import { apiRequest, authorize } from './api';
-import { getUserToken, setUserToken, getTokenFromUrl } from './auth';
+import { apiRequest } from './api';
+import { getUserToken } from './auth';
 
 const requestAllBoards = () => {
     return apiRequest('members/me/boards?filter=starred&fields=id,name', {
