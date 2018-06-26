@@ -8,7 +8,7 @@
             "sizes": "512x512"
         }
     ],
-    "start_url": "https://topdownapp.firebaseapp.com/",
+    "start_url": "https://topdown.app/",
     "background_color": "#FFFFFF",
     "theme_color": "#0061C3",
     "display": "minimal-ui"
