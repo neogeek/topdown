@@ -8,6 +8,7 @@ class Settings extends PureComponent {
                 <ul className="list__list">
                     <li className="list__list_item">
                         <a
+                            href="#"
                             className="list__list_item_link button"
                             onClick={e => {
                                 e.preventDefault();
@@ -15,6 +16,19 @@ class Settings extends PureComponent {
                             }}
                         >
                             Reset Hidden Lists
+                        </a>
+                    </li>
+                    <li className="list__list_item">
+                        <a
+                            href="#"
+                            target="_blank"
+                            className="list__list_item_link button"
+                            onClick={e => {
+                                e.preventDefault();
+                                this.props.handleLogout();
+                            }}
+                        >
+                            Logout
                         </a>
                     </li>
                     <li className="list__list_item">

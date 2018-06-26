@@ -75,6 +75,7 @@ class Board extends PureComponent {
                     handleResettingHiddenLists={this.handleResettingHiddenLists.bind(
                         this
                     )}
+                    handleLogout={this.props.invalidateToken}
                 />
             </div>
         );
