@@ -9,10 +9,10 @@ const stringToHSL = string =>
 class Card extends PureComponent {
     render() {
         return (
-            <li className="card" title={this.props.boardName}>
+            <li className="list__list_item" title={this.props.boardName}>
                 <a
                     href={this.props.url}
-                    className="card__link"
+                    className="list__list_item_link card__link"
                     target="_blank"
                     style={{
                         borderLeftColor: stringToHSL(this.props.boardName)
