@@ -2,4 +2,4 @@
 
 > A simple, read-only, Trello board aggregator.
 
-![](screenshot.png)
+![](screenshot.jpg)
