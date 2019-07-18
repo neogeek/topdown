@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Settings = ({handleResettingHiddenLists, handleLogout}) =>
+const Settings = ({handleResettingHiddenLists, handleLogout}) => (
     <div className="list">
         <h2 className="list__header">Settings</h2>
         <ul className="list__list">
@@ -15,7 +15,7 @@ const Settings = ({handleResettingHiddenLists, handleLogout}) =>
 
                     }}
                 >
-          Reset Hidden Lists
+                    Reset Hidden Lists
                 </a>
             </li>
             <li className="list__list_item">
@@ -30,7 +30,7 @@ const Settings = ({handleResettingHiddenLists, handleLogout}) =>
 
                     }}
                 >
-          Logout
+                    Logout
                 </a>
             </li>
             <li className="list__list_item">
@@ -39,9 +39,10 @@ const Settings = ({handleResettingHiddenLists, handleLogout}) =>
                     target="_blank"
                     className="list__list_item_link button"
                 >
-          Support
+                    Support
                 </a>
             </li>
         </ul>
-    </div>;
+    </div>
+);
 export default Settings;
