@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "@neogeek/eslint-config-standards",
+    "@neogeek/eslint-config-standards/.eslintrc-react"
+  ],
+  "rules": {
+    "id-length": 0,
+    "max-lines-per-function": 0,
+    "max-statements": 0,
+    "sort-keys": 0
+  }
+}
