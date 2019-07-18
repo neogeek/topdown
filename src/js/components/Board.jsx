@@ -1,85 +1,68 @@
-import React, { PureComponent } from 'react';
+import React, {useEffect, useState} from 'react';
 
-import { List, Card, Settings } from './index';
+import {Card, List, Settings} from './index';
 
-import { getAllData } from '../utilities/datastore';
-import { getSettings, setSettings, clearSettings } from '../utilities/settings';
+import {setJSONSetting, getJSONSetting} from '../utilities/settings';
+import {getAllData} from '../utilities/datastore';
 
-class Board extends PureComponent {
-    constructor(props) {
-        super(props);
+import {HIDDEN_LISTS_KEY} from '../config';
 
-        const settings = getSettings();
+const Board = ({invalidateToken}) => {
 
-        this.state = {
-            data: [],
-            settings
-        };
-    }
+    const [
+        data,
+        setData
+    ] = useState([]);
+    const [
+        hiddenLists,
+        setHiddenLists
+    ] = useState(getJSONSetting(HIDDEN_LISTS_KEY, []));
 
-    componentDidMount() {
-        getAllData()
-            .then(data => this.setState({ data }))
-            .catch(() => this.props.invalidateToken());
-    }
+    const handleResettingHiddenLists = () => setHiddenLists([]);
 
-    handleHideList(listName) {
-        this.setState(
-            {
-                settings: {
-                    hiddenLists: [...this.state.settings.hiddenLists, listName]
-                }
-            },
-            () => setSettings(this.state.settings)
-        );
-    }
+    const handleHideList = listName =>
+        setHiddenLists([
+            ...hiddenLists,
+            listName
+        ]);
 
-    handleResettingHiddenLists() {
-        this.setState(
-            {
-                settings: {
-                    hiddenLists: []
-                }
-            },
-            () => clearSettings()
-        );
-    }
+    useEffect(() => setJSONSetting(HIDDEN_LISTS_KEY, hiddenLists), [hiddenLists]);
 
-    render() {
-        return (
-            <div className="board">
-                {this.state.data
-                    .filter(
-                        list =>
-                            this.state.settings.hiddenLists.indexOf(
-                                list.name
-                            ) === -1
-                    )
-                    .map((list, i) => (
-                        <List
-                            name={list.name}
-                            key={i}
-                            handleHideList={this.handleHideList.bind(this)}
-                        >
-                            {list.cards.map((card, j) => (
-                                <Card
-                                    name={card.name}
-                                    url={card.url}
-                                    boardName={card.boardName}
-                                    key={j}
-                                />
-                            ))}
-                        </List>
-                    ))}
-                <Settings
-                    handleResettingHiddenLists={this.handleResettingHiddenLists.bind(
-                        this
-                    )}
-                    handleLogout={this.props.invalidateToken}
-                />
-            </div>
-        );
-    }
-}
+    useEffect(
+        () =>
+            getAllData()
+                .then(setData)
+                .catch(() => invalidateToken()),
+        []
+    );
+
+    return (
+        <div className="board">
+            {data
+                .filter(list => hiddenLists.indexOf(list.name) === -1)
+                .map((list, i) => (
+                    <List
+                        name={list.name}
+                        key={i}
+                        handleHideList={handleHideList}
+                    >
+                        {list.cards.map((card, j) => (
+                            <Card
+                                name={card.name}
+                                url={card.url}
+                                boardName={card.boardName}
+                                key={j}
+                            />
+                        ))}
+                    </List>
+                ))}
+            <Settings
+                handleResettingHiddenLists={handleResettingHiddenLists}
+                handleLogout={invalidateToken}
+            />
+        </div>
+    );
+
+};
 
 export default Board;

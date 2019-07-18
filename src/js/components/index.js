@@ -4,4 +4,4 @@ import Card from './Card';
 import List from './List';
 import Settings from './Settings';
 
-export { Authentication, Board, Card, List, Settings };
+export {Authentication, Board, Card, List, Settings};

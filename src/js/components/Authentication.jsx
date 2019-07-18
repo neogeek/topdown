@@ -1,58 +1,57 @@
-import React, { Component } from 'react';
+import React, {useEffect, useState} from 'react';
 
-import { appName, appKey, redirectUrl } from '../config';
+import {authorize} from '../utilities/api';
+import {getSetting, setSetting} from '../utilities/settings';
 
-import { authorize } from '../utilities/api';
-import {
-    getUserToken,
-    setUserToken,
-    removeUserToken,
-    getTokenFromUrl
-} from '../utilities/auth';
+import {USER_TOKEN_KEY} from '../config';
 
-class Authentication extends Component {
-    constructor(props) {
-        super(props);
+const Authentication = ({children}) => {
 
-        this.state = {
-            token: getUserToken()
-        };
+    const [
+        token,
+        setToken
+    ] = useState(getSetting(USER_TOKEN_KEY));
 
-        const userTokenFromUrl = getTokenFromUrl();
+    useEffect(() => {
+
+        const userTokenFromUrl = window.location.hash.match(/token=([^&]+)/u);
 
         if (userTokenFromUrl) {
-            this.state.token = userTokenFromUrl;
 
-            setUserToken(userTokenFromUrl);
+            setToken(userTokenFromUrl[1]);
+
         }
 
-        this.invalidateToken = this.invalidateToken.bind(this);
+    }, []);
+
+    useEffect(() => {
+
+        setSetting(USER_TOKEN_KEY, token);
+
+    }, [token]);
+
+    const invalidateToken = () => setToken();
+
+    if (token) {
+
+        return React.Children.map(children, child =>
+            React.cloneElement(child, {
+                invalidateToken
+            }));
+
     }
 
-    invalidateToken() {
-        this.setState({ token: null });
+    return (
+        <div className="authentication__loginwrapper">
+            <button
+                className="button button_authentication"
+                onClick={authorize}
+            >
+                Login with Trello
+            </button>
+        </div>
+    );
 
-        removeUserToken();
-    }
-
-    render() {
-        return this.state.token ? (
-            React.Children.map(this.props.children, child =>
-                React.cloneElement(child, {
-                    invalidateToken: this.invalidateToken
-                })
-            )
-        ) : (
-            <div className="authentication__loginwrapper">
-                <button
-                    className="button button_authentication"
-                    onClick={() => authorize({ appName, appKey, redirectUrl })}
-                >
-                    Login with Trello
-                </button>
-            </div>
-        );
-    }
-}
+};
 
 export default Authentication;

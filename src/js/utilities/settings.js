@@ -1,16 +1,13 @@
-const SETTINGS_KEY = 'settings';
+export const getJSONSetting = (key, defaultvalue) =>
+    JSON.parse(localStorage.getItem(key)) || defaultvalue;
 
-const DEFAULT_SETTINGS = {
-    hiddenLists: []
-};
+export const getSetting = (key, defaultvalue) =>
+    localStorage.getItem(key) || defaultvalue;
 
-const getSettings = () =>
-    JSON.parse(localStorage.getItem(SETTINGS_KEY)) || DEFAULT_SETTINGS;
+export const removeSetting = key => localStorage.removeItem(key);
 
-const setSettings = settings =>
-    localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
+export const setJSONSetting = (key, value) =>
+    localStorage.setItem(key, JSON.stringify(value));
 
-const clearSettings = () =>
-    localStorage.setItem(SETTINGS_KEY, JSON.stringify(DEFAULT_SETTINGS));
-
-export { getSettings, setSettings, clearSettings };
+export const setSetting = (key, value) =>
+    value && localStorage.setItem(key, value);
