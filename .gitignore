@@ -4,4 +4,7 @@ public/js/bundle.min.js
 
 package-lock.json
 
+# Firebase
+
+.firebase/
 *.log
