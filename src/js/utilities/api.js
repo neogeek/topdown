@@ -14,6 +14,6 @@ export const apiRequest = (path, {userToken}) =>
 
 export const authorize = () => {
 
-    window.location.href = `${API_URL}/authorize?response_type=token&key=${APP_KEY}&redirect_uri=${encodeURIComponent(REDIRECT_URL)}&callback_method=fragment&scope=read%2Cwrite&expiration=never&name=${encodeURIComponent(APP_NAME)}`;
+    window.location.href = `${API_URL}/authorize?response_type=token&key=${APP_KEY}&redirect_uri=${encodeURIComponent(REDIRECT_URL)}&callback_method=fragment&scope=read&expiration=never&name=${encodeURIComponent(APP_NAME)}`;
 
 };
