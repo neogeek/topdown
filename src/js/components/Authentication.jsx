@@ -42,10 +42,53 @@ const Authentication = ({children}) => {
     }
 
     return (
-        <div className="authentication__loginwrapper">
-            <button className="button button_authentication" onClick={authorize}>
-        Login with Trello
-            </button>
+        <div className="promo__wrapper">
+            <header className="promo__header">
+                <ul>
+                    <li>
+                        <a href="https://topdown.app">
+                            <b>Top Down</b>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/neogeek/topdown/">GitHub</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/neogeek/topdown/issues">Support</a>
+                    </li>
+                </ul>
+            </header>
+            <h1>
+        Your tasks,
+                <br />
+        together at last
+            </h1>
+            <p>
+        Trello makes it easy to track tasks per project, and <b>Top Down</b>{' '}
+        makes it easy to aggregate those tasks in one place.
+            </p>
+
+            <p>
+        Just{' '}
+                <i role="img" aria-label="star">
+          ⭐️
+                </i>{' '}
+        your most active boards and their lists will appear, combined, in your{' '}
+                <b>Top Down</b> dashboard.
+            </p>
+
+            <p>Hide the lists you don't want, keep the ones you do. Easy as that!</p>
+            <div className="authentication__wrapper">
+                <button className="button button_authentication" onClick={authorize}>
+          Login with Trello
+                </button>{' '}
+                <span className="button_authentication_notice">
+          We request read-only access.
+                </span>
+            </div>
+            <a href="images/screenshot.jpg">
+                <img src="images/screenshot.jpg" />
+            </a>
         </div>
     );
 
