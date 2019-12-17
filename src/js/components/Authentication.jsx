@@ -43,11 +43,8 @@ const Authentication = ({children}) => {
 
     return (
         <div className="authentication__loginwrapper">
-            <button
-                className="button button_authentication"
-                onClick={authorize}
-            >
-                Login with Trello
+            <button className="button button_authentication" onClick={authorize}>
+        Login with Trello
             </button>
         </div>
     );

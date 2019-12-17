@@ -1,12 +1,13 @@
 {
   "presets": [
-    ["env", {
-      "targets": {
-        "browsers": ["defaults"]
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": ["defaults"]
+        }
       }
-    }]
+    ]
   ],
-  "plugins": [
-      ["transform-object-rest-spread", { "useBuiltIns": true }]
-  ]
+  "plugins": [["transform-object-rest-spread", { "useBuiltIns": true }]]
 }

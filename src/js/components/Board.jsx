@@ -20,11 +20,10 @@ const Board = ({invalidateToken}) => {
 
     const handleResettingHiddenLists = () => setHiddenLists([]);
 
-    const handleHideList = listName =>
-        setHiddenLists([
-            ...hiddenLists,
-            listName
-        ]);
+    const handleHideList = listName => setHiddenLists([
+        ...hiddenLists,
+        listName
+    ]);
 
     useEffect(() => setJSONSetting(HIDDEN_LISTS_KEY, hiddenLists), [hiddenLists]);
 
@@ -41,11 +40,7 @@ const Board = ({invalidateToken}) => {
             {data
                 .filter(list => hiddenLists.indexOf(list.name) === -1)
                 .map((list, i) => (
-                    <List
-                        name={list.name}
-                        key={i}
-                        handleHideList={handleHideList}
-                    >
+                    <List name={list.name} key={i} handleHideList={handleHideList}>
                         {list.cards.map((card, j) => (
                             <Card
                                 name={card.name}

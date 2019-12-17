@@ -26,9 +26,7 @@ self.addEventListener('activate', event => {
         .keys()
         .then(keys =>
             Promise.all(keys
-                .filter(key =>
-                    key.indexOf(cacheName) === 0 &&
-                                key !== cacheVersion)
+                .filter(key => key.indexOf(cacheName) === 0 && key !== cacheVersion)
                 .map(key => caches.delete(key)))));
 
     return self.clients.claim();
@@ -51,9 +49,7 @@ self.addEventListener('fetch', event => {
 
         event.respondWith(caches.match(event.request).then(response => {
 
-            caches
-                .open(cacheVersion)
-                .then(cache => cache.add(event.request.url));
+            caches.open(cacheVersion).then(cache => cache.add(event.request.url));
 
             return fetch(event.request).catch(() => response);
 
