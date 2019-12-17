@@ -35,7 +35,7 @@ const Settings = ({handleResettingHiddenLists, handleLogout}) => (
             </li>
             <li className="list__list_item">
                 <a
-                    href="https://github.com/neogeek/top-down/issues"
+                    href="https://github.com/neogeek/topdown/issues"
                     target="_blank"
                     className="list__list_item_link button"
                 >
