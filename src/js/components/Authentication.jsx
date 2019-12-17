@@ -22,6 +22,12 @@ const Authentication = ({children}) => {
 
             setSetting(USER_TOKEN_KEY, userTokenFromUrl[1]);
 
+            window.history.replaceState(
+                null,
+                document.title,
+                window.location.pathname
+            );
+
         }
 
     }, []);
@@ -37,6 +43,8 @@ const Authentication = ({children}) => {
         setToken();
 
         removeSetting(USER_TOKEN_KEY);
+
+        window.history.replaceState(null, document.title, window.location.pathname);
 
     };
 
