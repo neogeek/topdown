@@ -35,6 +35,12 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
 
+    if (!event.request.url.match(/^http/u)) {
+
+        return;
+
+    }
+
     if (networkFiles.filter(item => event.request.url.match(item)).length) {
 
         console.log('[network fetch]', event.request.url);
