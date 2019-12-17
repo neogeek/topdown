@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
 import {authorize} from '../utilities/api';
-import {getSetting, setSetting} from '../utilities/settings';
+import {getSetting, setSetting, removeSetting} from '../utilities/settings';
 
 import {USER_TOKEN_KEY} from '../config';
 
@@ -20,6 +20,8 @@ const Authentication = ({children}) => {
 
             setToken(userTokenFromUrl[1]);
 
+            setSetting(USER_TOKEN_KEY, userTokenFromUrl[1]);
+
         }
 
     }, []);
@@ -30,7 +32,13 @@ const Authentication = ({children}) => {
 
     }, [token]);
 
-    const invalidateToken = () => setToken();
+    const invalidateToken = () => {
+
+        setToken();
+
+        removeSetting(USER_TOKEN_KEY);
+
+    };
 
     if (token) {
 
