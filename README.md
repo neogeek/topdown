@@ -4,4 +4,4 @@
 
 [![](https://img.shields.io/badge/Trello-Board-blue.svg)](https://trello.com/b/1cRvXsdJ/top-down)
 
-![](screenshot.jpg)
+![](public/images/screenshot.jpg)
