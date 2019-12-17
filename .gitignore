@@ -1,6 +1,6 @@
-node_modules/
+dist/
 
-public/js/bundle.min.js
+node_modules/
 
 package-lock.json
 

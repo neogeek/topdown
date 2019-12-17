@@ -1,19 +1,15 @@
 {
   "devDependencies": {
+    "@neogeek/custom-webpack-cli": "neogeek/custom-webpack-cli",
     "@neogeek/eslint-config-standards": "4.2.0",
-    "babel-eslint": "10.0.3",
-    "babel-plugin-transform-object-rest-spread": "6.26.0",
-    "babel-preset-env": "1.7.0",
     "eslint": "6.7.2",
     "prettier": "1.19.1",
     "prettier-eslint": "9.0.1",
     "react": "16.12.0",
-    "react-dom": "16.12.0",
-    "spire-of-babel": "1.4.0",
-    "uglify-js": "3.7.2"
+    "react-dom": "16.12.0"
   },
   "scripts": {
-    "build": "NODE_ENV=production spire-of-babel ./src/js/index.jsx --bundle | uglifyjs --compress --mangle > ./public/js/bundle.min.js",
-    "serve": "(cd public && python -m SimpleHTTPServer)"
+    "start": "custom-webpack-dev-server-cli",
+    "build": "custom-webpack-cli"
   }
 }
