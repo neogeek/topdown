@@ -25,15 +25,19 @@ const Board = ({invalidateToken}) => {
         listName
     ]);
 
-    useEffect(() => setJSONSetting(HIDDEN_LISTS_KEY, hiddenLists), [hiddenLists]);
+    useEffect(() => {
 
-    useEffect(
-        () =>
-            getAllData()
-                .then(setData)
-                .catch(() => invalidateToken()),
-        []
-    );
+        setJSONSetting(HIDDEN_LISTS_KEY, hiddenLists);
+
+    }, [hiddenLists]);
+
+    useEffect(() => {
+
+        getAllData()
+            .then(setData)
+            .catch(() => invalidateToken());
+
+    }, []);
 
     return (
         <div className="board">
