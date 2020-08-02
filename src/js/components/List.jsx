@@ -1,18 +1,20 @@
 import React from 'react';
 
-const List = ({children, name, handleHideList}) =>
+const List = ({ children, name, handleHideList }) =>
     children.length > 0 && (
         <div className="list">
             <div className="list__header">
                 <h2 className="list__header_list_name">
                     {name}
-                    <span className="list__header_item_count">{children.length}</span>
+                    <span className="list__header_item_count">
+                        {children.length}
+                    </span>
                 </h2>
                 <button
                     onClick={() => handleHideList(name)}
                     className="button list__header_hide_list"
                 >
-          &times;
+                    &times;
                 </button>
             </div>
             <ul className="list__list">{children}</ul>
