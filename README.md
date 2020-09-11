@@ -10,7 +10,7 @@
 
 Top Down can be installed via Google Chrome as a standalone app on Desktop.
 
-![](https://i.imgur.com/rrG4VI4.png)
+<img src="https://i.imgur.com/rrG4VI4.png" width="400">
 
 Top Down can also be installed via Safari on iOS and Chrome Android.
 
