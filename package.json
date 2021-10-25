@@ -1,8 +1,8 @@
 {
   "devDependencies": {
-    "@neogeek/custom-webpack-cli": "2.5.0",
-    "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "@neogeek/custom-webpack-cli": "2.15.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
   },
   "scripts": {
     "start": "custom-webpack-dev-server-cli",
