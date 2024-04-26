@@ -1,7 +1,7 @@
 {
   "name": "topdown.app",
   "devDependencies": {
-    "@neogeek/custom-webpack-cli": "3.0.2",
+    "@neogeek/custom-webpack-cli": "3.1.0",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
