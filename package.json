@@ -1,4 +1,5 @@
 {
+  "name": "topdown.app",
   "devDependencies": {
     "@neogeek/custom-webpack-cli": "3.0.1",
     "react": "18.2.0",
@@ -7,5 +8,6 @@
   "scripts": {
     "start": "custom-webpack-dev-server-cli",
     "build": "custom-webpack-cli"
-  }
+  },
+  "private": true
 }
